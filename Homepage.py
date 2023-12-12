@@ -115,7 +115,7 @@ def displayAnswerFromInput(doc):
     ai_message = AIMessage(content=final_answer)
     st.session_state["messages"].append(ai_message)
     with st.chat_message("assistant"):
-        st.markdown(ai_message.content)
+        st.markdown(ai_message.content, True)
         if (extend != "[]"):
             parsed_data = json.loads(extend)
             for item in parsed_data:
@@ -174,7 +174,7 @@ if "ERNIE_CLIENT_ID" in st.session_state and "ERNIE_CLIENT_SECRET" in st.session
                         st.markdown(message.content)
                 elif isinstance(message, AIMessage):
                     with st.chat_message("assistant"):
-                        st.markdown(message.content)
+                        st.markdown(message.content,True)
             prompt = st.chat_input("Type something...")
             if prompt:
                 answerThisQuestionFromInput(prompt)
